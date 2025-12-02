@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>NAME:Himavath M</H3>
+<H3> REGISTER NO:212223240053</H3>
 <H3>EX. NO.6</H3>
-<H3>DATE:</H3>
+<H3>DATE::28-10-2025</H3>
 <H1 ALIGN =CENTER>Implementation of Semantic ANalysis</H1>
 <H3>Aim: to perform Parts of speech identification and Synonym using Natural Language Processing (NLP) techniques. </H3> 
  <BR>
@@ -16,13 +16,40 @@ Step 5:Iterate through each word in the tokenized text.<br>
 •	For each verb , iterate through its synsets (sets of synonyms) using wordnet.synsets(word).<br>
 •	Extract synonyms and antonyms using lemma.name() and lemma.antonyms()[0].name() respectively.<br>
 •	Print the unique sets of synonyms and antonyms.
-<H3>Program:</H3>
 
-Insert your code here
+## Program:
+```
+import nltk
+#import wordnet
+nltk.download( 'punkt' )
+nltk.download('wordnet')
+from nltk.tokenize import word_tokenize
+nltk.download( 'averaged_perceptron_tagger' )
+sentence=input ()
+# Tokenize the sentence into words
+words = word_tokenize(sentence)
+# Identify the parts of speech for each word
+pos_tags= nltk.pos_tag(words)
+from nltk.corpus import wordnet
+
+# Identify synonyms and antonyms for each word
+synonyms =[]
+antonyms =[]
+for word in words:
+	for syn in wordnet.synsets(word) :
+		for lemma in syn.lemmas():
+			synonyms . append (lemma . name( ) )
+			if lemma . antonyms():
+				antonyms . append ( lemma. antonyms ( ) [0] . name ( ) )
+# Print the synonyms and antonyms
+print ( "Synonyms : " ,set (synonyms) )
+print ( "Antonyms : " ,set(antonyms) )
+```
 
 <H3>Output</H3>
-
-Show your results here
+<img width="379" height="50" alt="image" src="https://github.com/user-attachments/assets/dccf0139-6a70-45c0-b914-6d1f196912a5" />
+<img width="187" height="172" alt="image" src="https://github.com/user-attachments/assets/5e328afd-d620-4fb4-a825-703f6d8cf121" />
+<img width="962" height="49" alt="image" src="https://github.com/user-attachments/assets/e6d2b357-6979-4ae9-a676-39168a2a6aae" />
 
 <H3>Result:</H3>
 Thus ,the program to perform the Parts of Speech identification and Synonymis executed sucessfully.
